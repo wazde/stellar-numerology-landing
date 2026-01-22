@@ -2,6 +2,7 @@ import StarryBackground from "@/components/StarryBackground";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import NumbersSection from "@/components/NumbersSection";
+import OffersSection from "@/components/OffersSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -13,6 +14,7 @@ const Index = () => {
         <HeroSection />
         <ServicesSection />
         <NumbersSection />
+        <OffersSection />
         <CTASection />
         <Footer />
       </div>
