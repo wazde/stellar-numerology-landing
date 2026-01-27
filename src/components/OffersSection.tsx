@@ -46,14 +46,21 @@ const offers = [
       "Objectifs ciblés, accompagnement, planification et suivi"
     ],
     popular: false,
-    footnote: "*présentiel, me contacter en amont pour le déplacement"
+    footnote: "*présentiel, me contacter en amont pour le déplacement",
+    externalLink: "https://buy.stripe.com/test_dRm9ATdBIeqpgHFc9VenS00"
   }
 ];
 
 const OffersSection = () => {
   const [loadingOffer, setLoadingOffer] = useState<string | null>(null);
 
-  const handlePayment = async (offerId: string) => {
+  const handlePayment = async (offerId: string, externalLink?: string) => {
+    // If external link is provided, open it directly
+    if (externalLink) {
+      window.open(externalLink, "_blank");
+      return;
+    }
+
     setLoadingOffer(offerId);
     try {
       const { data, error } = await supabase.functions.invoke("create-payment", {
@@ -145,8 +152,8 @@ const OffersSection = () => {
                 <Button 
                   variant={offer.popular ? "mystical" : "outline"} 
                   className="w-full"
-                  onClick={() => handlePayment(offer.id)}
-                  disabled={loadingOffer !== null}
+                  onClick={() => handlePayment(offer.id, offer.externalLink)}
+                  disabled={loadingOffer !== null && !offer.externalLink}
                 >
                   {loadingOffer === offer.id ? (
                     <>
