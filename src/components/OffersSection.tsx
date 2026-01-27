@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StarburstIcon, ConstellationDivider } from "./MysticalIcons";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const offers = [
   {
+    id: "revelation",
     name: "Révélation",
     subtitle: "Découverte de son thème numérologique",
     tagline: "Découvrir, comprendre, mettre en lumière",
@@ -16,6 +20,7 @@ const offers = [
     popular: false
   },
   {
+    id: "acceptation",
     name: "Acceptation",
     subtitle: "Thème numérologique en détail",
     tagline: "Accueillir, transformer, se repositionner",
@@ -28,6 +33,7 @@ const offers = [
     popular: true
   },
   {
+    id: "elevation",
     name: "Élévation",
     subtitle: "Pack « Révélation – Acceptation – Élévation » 3 mois",
     tagline: "S'aligner, évoluer, incarner",
@@ -45,6 +51,28 @@ const offers = [
 ];
 
 const OffersSection = () => {
+  const [loadingOffer, setLoadingOffer] = useState<string | null>(null);
+
+  const handlePayment = async (offerId: string) => {
+    setLoadingOffer(offerId);
+    try {
+      const { data, error } = await supabase.functions.invoke("create-payment", {
+        body: { offerId },
+      });
+
+      if (error) throw error;
+
+      if (data?.url) {
+        window.open(data.url, "_blank");
+      }
+    } catch (error) {
+      console.error("Payment error:", error);
+      toast.error("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setLoadingOffer(null);
+    }
+  };
+
   return (
     <section className="relative py-24 px-4">
       <div className="max-w-6xl mx-auto">
@@ -117,8 +145,17 @@ const OffersSection = () => {
                 <Button 
                   variant={offer.popular ? "mystical" : "outline"} 
                   className="w-full"
+                  onClick={() => handlePayment(offer.id)}
+                  disabled={loadingOffer !== null}
                 >
-                  Choisir cette offre
+                  {loadingOffer === offer.id ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Chargement...
+                    </>
+                  ) : (
+                    "Choisir cette offre"
+                  )}
                 </Button>
               </CardContent>
             </Card>
