@@ -17,7 +17,8 @@ const offers = [
       "PDF 6 pages",
       "Message vocal personnalisé"
     ],
-    popular: false
+    popular: false,
+    externalLink: "https://buy.stripe.com/test_28EcN5apw5TT2QP6PBenS01"
   },
   {
     id: "acceptation",
