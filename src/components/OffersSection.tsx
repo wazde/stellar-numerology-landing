@@ -39,7 +39,7 @@ const offers = [
   name: "Élévation",
   subtitle: "Pack « Révélation – Acceptation – Élévation » 3 mois",
   tagline: "S'aligner, évoluer, incarner",
-  price: 330,
+  price: 270,
   features: [
   "Accompagnement progressif – 1 séance / mois",
   "Présentiel* ou visio – enregistrement des séances",
