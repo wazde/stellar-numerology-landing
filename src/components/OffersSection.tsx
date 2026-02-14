@@ -55,7 +55,7 @@ const offers = [
 
 const OffersSection = () => {
   const [loadingOffer, setLoadingOffer] = useState<string | null>(null);
-  
+
 
   const handlePayment = async (offerId: string, externalLink?: string) => {
     if (externalLink) {
@@ -96,7 +96,7 @@ const OffersSection = () => {
           <ConstellationDivider className="w-full max-w-md mx-auto text-primary/60 mt-6" />
         </div>
 
-        <div className="flex-col gap-4 lg:gap-6 flex md:flex-col">
+        <div className="flex-col gap-4 lg:gap-6 flex md:flex-row">
           {offers.map((offer, index) =>
           <Card
             key={index}
