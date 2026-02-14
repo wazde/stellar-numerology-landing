@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StarburstIcon, ConstellationDivider } from "./MysticalIcons";
@@ -55,7 +56,7 @@ const offers = [
 
 const OffersSection = () => {
   const [loadingOffer, setLoadingOffer] = useState<string | null>(null);
-
+  const navigate = useNavigate();
 
   const handlePayment = async (offerId: string, externalLink?: string) => {
     if (externalLink) {
@@ -155,7 +156,7 @@ const OffersSection = () => {
               <Button
                 variant={offer.popular ? "mystical" : "outline"}
                 className="w-full"
-                onClick={() => window.open(offer.calLink, "_blank")}>
+                onClick={() => navigate(`/reservation?offre=${offer.id}`)}>
                     <Calendar className="mr-2 h-4 w-4" />
                     Réserver un créneau
                   </Button> :
