@@ -47,8 +47,7 @@ const offers = [
       "Objectifs ciblés, accompagnement, planification et suivi"
     ],
     popular: false,
-    footnote: "*présentiel, me contacter en amont pour le déplacement",
-    externalLink: "https://buy.stripe.com/test_dRm9ATdBIeqpgHFc9VenS00"
+    footnote: "*présentiel, me contacter en amont pour le déplacement"
   }
 ];
 
