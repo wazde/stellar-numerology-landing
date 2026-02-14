@@ -96,7 +96,7 @@ const OffersSection = () => {
           <ConstellationDivider className="w-full max-w-md mx-auto text-primary/60 mt-6" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-8">
           {offers.map((offer, index) => (
             <Card 
               key={index}
