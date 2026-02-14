@@ -47,7 +47,7 @@
 
     /* Gradients */
     --gradient-gold: linear-gradient(135deg, hsl(45 90% 40%), hsl(45 80% 55%), hsl(45 70% 70%));
-    --gradient-cosmic: linear-gradient(180deg, hsl(240 20% 6%) 0%, hsl(260 30% 12%) 50%, hsl(240 20% 6%) 100%);
+    --gradient-cosmic: linear-gradient(180deg, hsl(240 20% 6%) 0%, hsl(270 35% 14%) 30%, hsl(260 30% 12%) 60%, hsl(275 25% 10%) 80%, hsl(240 20% 6%) 100%);
     --gradient-glow: radial-gradient(ellipse at center, hsl(45 80% 55% / 0.15) 0%, transparent 70%);
 
     /* Shadows */
