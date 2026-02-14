@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ConstellationDivider, MoonIcon } from "./MysticalIcons";
 
 const Footer = () => {
@@ -20,9 +21,9 @@ const Footer = () => {
           </p>
           
           <div className="flex gap-8 mt-4 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-primary transition-colors">À propos</a>
-            <a href="#" className="hover:text-primary transition-colors">Services</a>
-            <a href="#" className="hover:text-primary transition-colors">Contact</a>
+            <a href="#a-propos" className="hover:text-primary transition-colors">À propos</a>
+            <a href="#offres" className="hover:text-primary transition-colors">Services</a>
+            <Link to="/mentions-legales" className="hover:text-primary transition-colors">Mentions légales</Link>
           </div>
           
           <p className="text-muted-foreground/50 text-xs mt-6">
