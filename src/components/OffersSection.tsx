@@ -7,51 +7,51 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const offers = [
-  {
-    id: "revelation",
-    name: "Révélation",
-    subtitle: "Découverte de son thème numérologique",
-    tagline: "Découvrir, comprendre, mettre en lumière",
-    price: 45,
-    features: [
-      "PDF 6 pages",
-      "Message vocal personnalisé"
-    ],
-    popular: false,
-    externalLink: "https://buy.stripe.com/test_28EcN5apw5TT2QP6PBenS01"
-  },
-  {
-    id: "acceptation",
-    name: "Acceptation",
-    subtitle: "Thème numérologique en détail",
-    tagline: "Accueillir, transformer, se repositionner",
-    price: 120,
-    features: [
-      "Séance visio 1h30",
-      "Enregistrement transmis",
-      "Compte rendu PDF"
-    ],
-    popular: true,
-    calLink: "https://cal.eu/elisefanchon-numerologie/offre-acceptation"
-  },
-  {
-    id: "elevation",
-    name: "Élévation",
-    subtitle: "Pack « Révélation – Acceptation – Élévation » 3 mois",
-    tagline: "S'aligner, évoluer, incarner",
-    price: 330,
-    features: [
-      "Accompagnement progressif – 1 séance / mois",
-      "Présentiel* ou visio – enregistrement des séances",
-      "Comptes rendus PDF",
-      "Suivi, messages & vocaux",
-      "Objectifs ciblés, accompagnement, planification et suivi"
-    ],
-    popular: false,
-    footnote: "*présentiel, me contacter en amont pour le déplacement",
-    calLink: "https://cal.eu/elisefanchon-numerologie/offre-elevation"
-  }
-];
+{
+  id: "revelation",
+  name: "Révélation",
+  subtitle: "Découverte de son thème numérologique",
+  tagline: "Découvrir, comprendre, mettre en lumière",
+  price: 45,
+  features: [
+  "PDF 6 pages",
+  "Message vocal personnalisé"],
+
+  popular: false,
+  externalLink: "https://buy.stripe.com/test_28EcN5apw5TT2QP6PBenS01"
+},
+{
+  id: "acceptation",
+  name: "Acceptation",
+  subtitle: "Thème numérologique en détail",
+  tagline: "Accueillir, transformer, se repositionner",
+  price: 120,
+  features: [
+  "Séance visio 1h30",
+  "Enregistrement transmis",
+  "Compte rendu PDF"],
+
+  popular: true,
+  calLink: "https://cal.eu/elisefanchon-numerologie/offre-acceptation"
+},
+{
+  id: "elevation",
+  name: "Élévation",
+  subtitle: "Pack « Révélation – Acceptation – Élévation » 3 mois",
+  tagline: "S'aligner, évoluer, incarner",
+  price: 330,
+  features: [
+  "Accompagnement progressif – 1 séance / mois",
+  "Présentiel* ou visio – enregistrement des séances",
+  "Comptes rendus PDF",
+  "Suivi, messages & vocaux",
+  "Objectifs ciblés, accompagnement, planification et suivi"],
+
+  popular: false,
+  footnote: "*présentiel, me contacter en amont pour le déplacement",
+  calLink: "https://cal.eu/elisefanchon-numerologie/offre-elevation"
+}];
+
 
 const OffersSection = () => {
   const [loadingOffer, setLoadingOffer] = useState<string | null>(null);
@@ -66,7 +66,7 @@ const OffersSection = () => {
     setLoadingOffer(offerId);
     try {
       const { data, error } = await supabase.functions.invoke("create-payment", {
-        body: { offerId },
+        body: { offerId }
       });
 
       if (error) throw error;
@@ -96,23 +96,23 @@ const OffersSection = () => {
           <ConstellationDivider className="w-full max-w-md mx-auto text-primary/60 mt-6" />
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 lg:gap-8">
-          {offers.map((offer, index) => (
-            <Card 
-              key={index}
-              className={`relative flex flex-col transition-all duration-500 hover:shadow-[0_0_40px_hsl(45_80%_55%/0.15)] ${
-                offer.popular 
-                  ? 'border-primary/50 shadow-[0_0_30px_hsl(45_80%_55%/0.1)]' 
-                  : 'hover:border-primary/30'
-              }`}
-            >
-              {offer.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+        <div className="flex-col gap-6 lg:gap-8 flex md:flex-col">
+          {offers.map((offer, index) =>
+          <Card
+            key={index}
+            className={`relative flex flex-col transition-all duration-500 hover:shadow-[0_0_40px_hsl(45_80%_55%/0.15)] ${
+            offer.popular ?
+            'border-primary/50 shadow-[0_0_30px_hsl(45_80%_55%/0.1)]' :
+            'hover:border-primary/30'}`
+            }>
+
+              {offer.popular &&
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="bg-gold-gradient text-primary-foreground text-xs font-semibold px-4 py-1 rounded-full">
                     Populaire
                   </span>
                 </div>
-              )}
+            }
 
               <CardHeader className="text-center pb-4 pt-8">
                 <StarburstIcon className="w-10 h-10 text-primary mx-auto mb-4" />
@@ -135,67 +135,67 @@ const OffersSection = () => {
                 </div>
 
                 <ul className="space-y-3 mb-8 flex-1">
-                  {offer.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
+                  {offer.features.map((feature, idx) =>
+                <li key={idx} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                       <span className="text-foreground/90 text-sm leading-relaxed">
                         {feature}
                       </span>
                     </li>
-                  ))}
+                )}
                 </ul>
 
-                {offer.footnote && (
-                  <p className="text-muted-foreground text-xs italic mb-4">
+                {offer.footnote &&
+              <p className="text-muted-foreground text-xs italic mb-4">
                     {offer.footnote}
                   </p>
-                )}
+              }
 
-                {offer.calLink ? (
-                  <>
-                    <Button 
-                      variant={offer.popular ? "mystical" : "outline"} 
-                      className="w-full"
-                      onClick={() => setExpandedCal(expandedCal === offer.id ? null : offer.id)}
-                    >
+                {offer.calLink ?
+              <>
+                    <Button
+                  variant={offer.popular ? "mystical" : "outline"}
+                  className="w-full"
+                  onClick={() => setExpandedCal(expandedCal === offer.id ? null : offer.id)}>
+
                       <Calendar className="mr-2 h-4 w-4" />
                       {expandedCal === offer.id ? "Masquer le calendrier" : "Réserver un créneau"}
                     </Button>
-                    {expandedCal === offer.id && (
-                      <div className="mt-4 rounded-lg overflow-hidden border border-border">
+                    {expandedCal === offer.id &&
+                <div className="mt-4 rounded-lg overflow-hidden border border-border">
                         <iframe
-                          src={offer.calLink}
-                          className="w-full border-0"
-                          style={{ height: "600px" }}
-                          title={`Réserver – ${offer.name}`}
-                        />
+                    src={offer.calLink}
+                    className="w-full border-0"
+                    style={{ height: "600px" }}
+                    title={`Réserver – ${offer.name}`} />
+
                       </div>
-                    )}
-                  </>
-                ) : (
-                  <Button 
-                    variant={offer.popular ? "mystical" : "outline"} 
-                    className="w-full"
-                    onClick={() => handlePayment(offer.id, offer.externalLink)}
-                    disabled={loadingOffer !== null && !offer.externalLink}
-                  >
-                    {loadingOffer === offer.id ? (
-                      <>
+                }
+                  </> :
+
+              <Button
+                variant={offer.popular ? "mystical" : "outline"}
+                className="w-full"
+                onClick={() => handlePayment(offer.id, offer.externalLink)}
+                disabled={loadingOffer !== null && !offer.externalLink}>
+
+                    {loadingOffer === offer.id ?
+                <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         Chargement...
-                      </>
-                    ) : (
-                      "Choisir cette offre"
-                    )}
+                      </> :
+
+                "Choisir cette offre"
+                }
                   </Button>
-                )}
+              }
               </CardContent>
             </Card>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default OffersSection;
