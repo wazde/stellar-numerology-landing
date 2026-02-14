@@ -55,7 +55,7 @@ const offers = [
 
 const OffersSection = () => {
   const [loadingOffer, setLoadingOffer] = useState<string | null>(null);
-  const [expandedCal, setExpandedCal] = useState<string | null>(null);
+  
 
   const handlePayment = async (offerId: string, externalLink?: string) => {
     if (externalLink) {
@@ -152,26 +152,13 @@ const OffersSection = () => {
               }
 
                 {offer.calLink ?
-              <>
-                    <Button
-                  variant={offer.popular ? "mystical" : "outline"}
-                  className="w-full"
-                  onClick={() => setExpandedCal(expandedCal === offer.id ? null : offer.id)}>
-
-                      <Calendar className="mr-2 h-4 w-4" />
-                      {expandedCal === offer.id ? "Masquer le calendrier" : "Réserver un créneau"}
-                    </Button>
-                    {expandedCal === offer.id &&
-                <div className="mt-4 rounded-lg overflow-hidden border border-border">
-                        <iframe
-                    src={offer.calLink}
-                    className="w-full border-0"
-                    style={{ height: "600px" }}
-                    title={`Réserver – ${offer.name}`} />
-
-                      </div>
-                }
-                  </> :
+              <Button
+                variant={offer.popular ? "mystical" : "outline"}
+                className="w-full"
+                onClick={() => window.open(offer.calLink, "_blank")}>
+                    <Calendar className="mr-2 h-4 w-4" />
+                    Réserver un créneau
+                  </Button> :
 
               <Button
                 variant={offer.popular ? "mystical" : "outline"}
