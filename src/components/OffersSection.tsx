@@ -96,11 +96,11 @@ const OffersSection = () => {
           <ConstellationDivider className="w-full max-w-md mx-auto text-primary/60 mt-6" />
         </div>
 
-        <div className="flex-col gap-6 lg:gap-8 flex md:flex-col">
+        <div className="flex flex-col md:flex-row gap-4 lg:gap-6">
           {offers.map((offer, index) =>
           <Card
             key={index}
-            className={`relative flex flex-col transition-all duration-500 hover:shadow-[0_0_40px_hsl(45_80%_55%/0.15)] ${
+            className={`relative flex flex-col flex-1 transition-all duration-500 hover:shadow-[0_0_40px_hsl(45_80%_55%/0.15)] ${
             offer.popular ?
             'border-primary/50 shadow-[0_0_30px_hsl(45_80%_55%/0.1)]' :
             'hover:border-primary/30'}`
@@ -108,33 +108,33 @@ const OffersSection = () => {
 
               {offer.popular &&
             <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-gold-gradient text-primary-foreground text-xs font-semibold px-4 py-1 rounded-full">
+                  <span className="bg-gold-gradient text-primary-foreground text-xs font-semibold px-3 py-0.5 rounded-full">
                     Populaire
                   </span>
                 </div>
             }
 
-              <CardHeader className="text-center pb-4 pt-8">
-                <StarburstIcon className="w-10 h-10 text-primary mx-auto mb-4" />
-                <CardTitle className="text-2xl text-gradient-gold mb-1">
+              <CardHeader className="text-center pb-2 pt-6">
+                <StarburstIcon className="w-8 h-8 text-primary mx-auto mb-2" />
+                <CardTitle className="text-xl text-gradient-gold mb-1">
                   {offer.name}
                 </CardTitle>
-                <p className="text-foreground text-sm font-medium">
+                <p className="text-foreground text-xs font-medium">
                   {offer.subtitle}
                 </p>
-                <p className="text-muted-foreground text-xs italic mt-2">
+                <p className="text-muted-foreground text-xs italic mt-1">
                   {offer.tagline}
                 </p>
               </CardHeader>
 
-              <CardContent className="flex-1 flex flex-col">
-                <div className="text-center mb-6">
-                  <span className="text-4xl md:text-5xl font-bold text-gradient-gold">
+              <CardContent className="flex-1 flex flex-col p-4 pt-0">
+                <div className="text-center mb-4">
+                  <span className="text-3xl md:text-4xl font-bold text-gradient-gold">
                     {offer.price}€
                   </span>
                 </div>
 
-                <ul className="space-y-3 mb-8 flex-1">
+                <ul className="space-y-2 mb-6 flex-1">
                   {offer.features.map((feature, idx) =>
                 <li key={idx} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
