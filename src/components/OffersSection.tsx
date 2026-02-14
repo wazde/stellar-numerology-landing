@@ -146,7 +146,7 @@ const OffersSection = () => {
                 </ul>
 
                 {offer.footnote &&
-              <p className="text-muted-foreground text-xs italic mb-4">
+              <p className="text-muted-foreground italic mb-4 text-sm">
                     {offer.footnote}
                   </p>
               }
