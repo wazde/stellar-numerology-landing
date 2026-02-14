@@ -1,15 +1,15 @@
 import { StarburstIcon } from "./MysticalIcons";
 
 const numbers = [
-  { num: "1", meaning: "Le Leader", trait: "Indépendance & Création" },
-  { num: "2", meaning: "Le Diplomate", trait: "Harmonie & Sensibilité" },
-  { num: "3", meaning: "L'Artiste", trait: "Expression & Joie" },
-  { num: "4", meaning: "Le Bâtisseur", trait: "Stabilité & Travail" },
-  { num: "5", meaning: "L'Aventurier", trait: "Liberté & Changement" },
-  { num: "6", meaning: "Le Protecteur", trait: "Amour & Responsabilité" },
-  { num: "7", meaning: "Le Sage", trait: "Spiritualité & Analyse" },
-  { num: "8", meaning: "L'Ambitieux", trait: "Pouvoir & Abondance" },
-  { num: "9", meaning: "L'Humaniste", trait: "Compassion & Sagesse" },
+  { num: "1", meaning: "Le Leader", trait: "Indépendance & Création", description: "Volonté, confiance en soi, chemin de vie, ambition, prise d'initiative et nouveau départ." },
+  { num: "2", meaning: "Le Diplomate", trait: "Harmonie & Sensibilité", description: "Intuition, coopération, empathie, équilibre émotionnel, partenariat et dualité." },
+  { num: "3", meaning: "L'Artiste", trait: "Expression & Joie", description: "Communication, créativité, optimisme, expression de soi, talent artistique et inspiration." },
+  { num: "4", meaning: "Le Bâtisseur", trait: "Stabilité & Travail", description: "Rigueur, organisation, persévérance, construction solide, ancrage et discipline." },
+  { num: "5", meaning: "L'Aventurier", trait: "Liberté & Changement", description: "Mouvement, adaptation, curiosité, transformation personnelle, voyage et ouverture d'esprit." },
+  { num: "6", meaning: "Le Protecteur", trait: "Amour & Responsabilité", description: "Famille, harmonie du foyer, guérison, engagement, générosité et sens du devoir." },
+  { num: "7", meaning: "Le Sage", trait: "Spiritualité & Analyse", description: "Introspection, quête de sens, développement spirituel, méditation, connaissance intérieure et éveil." },
+  { num: "8", meaning: "L'Ambitieux", trait: "Pouvoir & Abondance", description: "Réussite matérielle, prospérité, karma, leadership, énergie et manifestation." },
+  { num: "9", meaning: "L'Humaniste", trait: "Compassion & Sagesse", description: "Altruisme, mission de vie, achèvement, élévation spirituelle, cycle universel et don de soi." },
 ];
 
 const NumbersSection = () => {
@@ -49,8 +49,9 @@ const NumbersSection = () => {
               </span>
               
               {/* Tooltip on hover */}
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-card border border-primary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-20">
-                <p className="text-xs text-foreground">{item.trait}</p>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-card border border-primary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none w-48 z-20">
+                <p className="text-xs text-foreground font-medium mb-1">{item.trait}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-primary/30" />
               </div>
             </div>
