@@ -12,13 +12,13 @@ const offers = [
   name: "Révélation",
   subtitle: "Découverte de son thème numérologique",
   tagline: "Découvrir, comprendre, mettre en lumière",
-  price: 45,
+  price: 60,
   features: [
   "PDF 6 pages",
   "Message vocal personnalisé"],
 
   popular: false,
-  externalLink: "https://buy.stripe.com/test_28EcN5apw5TT2QP6PBenS01"
+  externalLink: "https://buy.stripe.com/3cIcN5dBIdml7756PBenS05"
 },
 {
   id: "acceptation",
