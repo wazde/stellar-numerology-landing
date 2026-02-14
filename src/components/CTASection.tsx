@@ -27,9 +27,11 @@ const CTASection = () => {
               de vous-même et de votre chemin de vie.
             </p>
             
-            <Button variant="mystical" size="lg" className="text-lg px-10 py-6">
-              Commencer mon voyage
-            </Button>
+            <a href="#offres">
+              <Button variant="mystical" size="lg" className="text-lg px-10 py-6">
+                Commencer mon voyage
+              </Button>
+            </a>
           </div>
         </div>
       </div>

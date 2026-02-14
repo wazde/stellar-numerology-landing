@@ -83,7 +83,7 @@ const OffersSection = () => {
   };
 
   return (
-    <section className="relative py-24 px-4">
+    <section id="offres" className="relative py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-primary tracking-[0.2em] uppercase text-sm mb-4">
