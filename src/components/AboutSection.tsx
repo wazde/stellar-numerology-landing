@@ -18,7 +18,7 @@ const AboutSection = () => {
 
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="shrink-0">
-            <div className="w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_30px_hsl(45_80%_55%/0.15)]">
+            <div className="w-20 h-20 md:w-53 md:h-35 rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_30px_hsl(45_80%_55%/0.15)]">
               <img
                 src={elisePortrait}
                 alt="Élise Fanchon – Numérologue"
