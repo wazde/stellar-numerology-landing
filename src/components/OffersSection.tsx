@@ -25,7 +25,7 @@ const offers = [
   name: "Acceptation",
   subtitle: "Thème numérologique en détail",
   tagline: "Accueillir, transformer, se repositionner",
-  price: 120,
+  price: 110,
   features: [
   "Séance visio 1h30",
   "Enregistrement transmis",
