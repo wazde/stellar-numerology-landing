@@ -22,8 +22,8 @@ const AboutSection = () => {
               <img
                 src={elisePortrait}
                 alt="Élise Fanchon – Numérologue"
-                className="w-full h-full object-cover"
-              />
+                className="w-150 h-150 object-cover" />
+
             </div>
           </div>
 
@@ -40,8 +40,8 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default AboutSection;
