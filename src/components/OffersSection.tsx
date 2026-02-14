@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StarburstIcon, ConstellationDivider } from "./MysticalIcons";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Loader2, Calendar } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -31,7 +31,8 @@ const offers = [
       "Enregistrement transmis",
       "Compte rendu PDF"
     ],
-    popular: true
+    popular: true,
+    calLink: "https://cal.eu/elisefanchon-numerologie/offre-acceptation"
   },
   {
     id: "elevation",
@@ -47,15 +48,16 @@ const offers = [
       "Objectifs ciblés, accompagnement, planification et suivi"
     ],
     popular: false,
-    footnote: "*présentiel, me contacter en amont pour le déplacement"
+    footnote: "*présentiel, me contacter en amont pour le déplacement",
+    calLink: "https://cal.eu/elisefanchon-numerologie/offre-elevation"
   }
 ];
 
 const OffersSection = () => {
   const [loadingOffer, setLoadingOffer] = useState<string | null>(null);
+  const [expandedCal, setExpandedCal] = useState<string | null>(null);
 
   const handlePayment = async (offerId: string, externalLink?: string) => {
-    // If external link is provided, open it directly
     if (externalLink) {
       window.open(externalLink, "_blank");
       return;
@@ -149,21 +151,44 @@ const OffersSection = () => {
                   </p>
                 )}
 
-                <Button 
-                  variant={offer.popular ? "mystical" : "outline"} 
-                  className="w-full"
-                  onClick={() => handlePayment(offer.id, offer.externalLink)}
-                  disabled={loadingOffer !== null && !offer.externalLink}
-                >
-                  {loadingOffer === offer.id ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Chargement...
-                    </>
-                  ) : (
-                    "Choisir cette offre"
-                  )}
-                </Button>
+                {offer.calLink ? (
+                  <>
+                    <Button 
+                      variant={offer.popular ? "mystical" : "outline"} 
+                      className="w-full"
+                      onClick={() => setExpandedCal(expandedCal === offer.id ? null : offer.id)}
+                    >
+                      <Calendar className="mr-2 h-4 w-4" />
+                      {expandedCal === offer.id ? "Masquer le calendrier" : "Réserver un créneau"}
+                    </Button>
+                    {expandedCal === offer.id && (
+                      <div className="mt-4 rounded-lg overflow-hidden border border-border">
+                        <iframe
+                          src={offer.calLink}
+                          className="w-full border-0"
+                          style={{ height: "600px" }}
+                          title={`Réserver – ${offer.name}`}
+                        />
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Button 
+                    variant={offer.popular ? "mystical" : "outline"} 
+                    className="w-full"
+                    onClick={() => handlePayment(offer.id, offer.externalLink)}
+                    disabled={loadingOffer !== null && !offer.externalLink}
+                  >
+                    {loadingOffer === offer.id ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Chargement...
+                      </>
+                    ) : (
+                      "Choisir cette offre"
+                    )}
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
