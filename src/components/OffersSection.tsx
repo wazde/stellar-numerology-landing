@@ -119,10 +119,10 @@ const OffersSection = () => {
                 <CardTitle className="text-xl text-gradient-gold mb-1">
                   {offer.name}
                 </CardTitle>
-                <p className="text-foreground text-xs font-medium">
+                <p className="text-foreground font-medium text-sm">
                   {offer.subtitle}
                 </p>
-                <p className="text-muted-foreground text-xs italic mt-1">
+                <p className="text-muted-foreground italic mt-1 text-sm">
                   {offer.tagline}
                 </p>
               </CardHeader>
