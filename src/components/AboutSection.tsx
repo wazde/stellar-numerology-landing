@@ -22,7 +22,7 @@ const AboutSection = () => {
               <img
                 src={elisePortrait}
                 alt="Élise Fanchon – Numérologue"
-                className="w-[120px] h-[120px] object-cover" />
+                className="w-full h-full object-cover" />
 
             </div>
           </div>
