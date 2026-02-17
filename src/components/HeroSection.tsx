@@ -3,7 +3,7 @@ import { MoonIcon, SunIcon, StarburstIcon } from "./MysticalIcons";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-[20px]">
+    <section className="relative min-h-[85vh] flex items-center justify-center px-4 py-[20px]">
       {/* Decorative elements */}
       <MoonIcon className="absolute top-20 left-10 w-16 h-16 text-primary opacity-30 animate-float" />
       <SunIcon className="absolute top-32 right-16 w-20 h-20 text-primary opacity-20 animate-float" style={{ animationDelay: '2s' }} />
