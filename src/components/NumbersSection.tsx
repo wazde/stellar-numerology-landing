@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { StarburstIcon } from "./MysticalIcons";
 
 const numbers = [
@@ -14,7 +17,51 @@ const numbers = [
   { num: "22", meaning: "Le Bâtisseur Visionnaire", description: "Une grande capacité à concrétiser des projets ambitieux. Tu avances quand tu relies vision et action." },
 ];
 
+function computeLifePath(dateStr: string): { result: number; steps: string } | null {
+  const match = dateStr.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if (!match) return null;
+
+  const digits = dateStr.replace(/\D/g, "").split("").map(Number);
+  let sum = digits.reduce((a, b) => a + b, 0);
+  const stepsArr = [`${digits.join("+")} = ${sum}`];
+
+  while (sum > 9 && sum !== 11 && sum !== 22) {
+    const d = sum.toString().split("").map(Number);
+    sum = d.reduce((a, b) => a + b, 0);
+    stepsArr.push(`${d.join("+")} = ${sum}`);
+  }
+
+  return { result: sum, steps: stepsArr.join(" → ") };
+}
+
 const NumbersSection = () => {
+  const [birthDate, setBirthDate] = useState("");
+  const [lifePathResult, setLifePathResult] = useState<{ result: number; steps: string } | null>(null);
+  const [error, setError] = useState("");
+
+  const handleCalculate = () => {
+    setError("");
+    setLifePathResult(null);
+
+    if (!/^\d{2}\/\d{2}\/\d{4}$/.test(birthDate)) {
+      setError("Format attendu : JJ/MM/AAAA");
+      return;
+    }
+
+    const [dd, mm, yyyy] = birthDate.split("/").map(Number);
+    if (mm < 1 || mm > 12 || dd < 1 || dd > 31 || yyyy < 1900 || yyyy > 2100) {
+      setError("Date invalide");
+      return;
+    }
+
+    const res = computeLifePath(birthDate);
+    if (res) setLifePathResult(res);
+  };
+
+  const matchedNumber = lifePathResult
+    ? numbers.find((n) => n.num === String(lifePathResult.result))
+    : null;
+
   return (
     <section id="nombres" className="relative py-24 px-4 overflow-hidden">
       {/* Background glow */}
@@ -36,22 +83,54 @@ const NumbersSection = () => {
             nos talents et notre destin.
           </p>
 
-          <div className="max-w-xl mx-auto text-left bg-card/50 border border-border/50 rounded-lg p-6 mb-8">
-            <h3 className="text-foreground font-semibold mb-3 text-center">Et si tu découvrais déjà une première clé sur toi ?</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              Ton chemin de vie est l'un des nombres les plus importants en numérologie. Il donne une indication précieuse sur ta manière d'avancer, tes élans naturels… et ce qui te met en mouvement.
+          {/* Calculator */}
+          <div className="max-w-md mx-auto bg-card/50 border border-border/50 rounded-lg p-6 mb-8">
+            <h3 className="text-foreground font-semibold mb-2">Et si tu découvrais déjà une première clé sur toi ?</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+              Entre ta date de naissance pour calculer ton chemin de vie.
             </p>
-            <p className="text-foreground/90 text-sm font-medium mb-2">Comment le calculer ?</p>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-              Additionne tous les chiffres de ta date de naissance, puis réduis jusqu'à obtenir un nombre entre 1 et 9.
-            </p>
-            <p className="text-muted-foreground text-xs italic mb-2">
-              Exception : les maîtres nombres 11 et 22 ne se réduisent pas.
-            </p>
-            <div className="text-sm text-muted-foreground space-y-1">
-              <p><span className="text-foreground/80">Exemple :</span> 28/04/2014 → 2+8+0+4+2+0+1+4 = 21 → 2+1 = <span className="text-primary font-semibold">3</span></p>
-              <p><span className="text-foreground/80">Maître nombre :</span> 24/02/1956 → 2+4+0+2+1+9+5+6 = 29 → 2+9 = <span className="text-primary font-semibold">11</span></p>
+
+            <div className="flex gap-3 mb-3">
+              <Input
+                type="text"
+                placeholder="JJ/MM/AAAA"
+                value={birthDate}
+                maxLength={10}
+                onChange={(e) => {
+                  let v = e.target.value.replace(/[^\d/]/g, "");
+                  // Auto-insert slashes
+                  if (v.length === 2 && birthDate.length === 1) v += "/";
+                  if (v.length === 5 && birthDate.length === 4) v += "/";
+                  if (v.length <= 10) setBirthDate(v);
+                }}
+                onKeyDown={(e) => e.key === "Enter" && handleCalculate()}
+                className="text-center text-lg tracking-wider"
+              />
+              <Button variant="mystical" onClick={handleCalculate}>
+                Calculer
+              </Button>
             </div>
+
+            {error && (
+              <p className="text-destructive text-sm">{error}</p>
+            )}
+
+            {lifePathResult && (
+              <div className="mt-5 pt-5 border-t border-border/50 animate-fade-in">
+                <p className="text-muted-foreground text-xs mb-2">{lifePathResult.steps}</p>
+                <p className="text-5xl font-bold text-gradient-gold mb-2">{lifePathResult.result}</p>
+                {matchedNumber && (
+                  <>
+                    <p className="text-primary font-semibold text-lg">{matchedNumber.meaning}</p>
+                    <p className="text-muted-foreground text-sm mt-2 leading-relaxed">{matchedNumber.description}</p>
+                  </>
+                )}
+              </div>
+            )}
+
+            <p className="text-muted-foreground text-xs italic mt-4">
+              Les maîtres nombres 11 et 22 ne se réduisent pas.
+            </p>
           </div>
 
           <p className="text-muted-foreground text-sm italic">
@@ -63,7 +142,11 @@ const NumbersSection = () => {
           {numbers.map((item, index) => (
             <div 
               key={index}
-              className="group relative flex flex-col items-center p-4 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 hover:bg-card transition-all duration-300 cursor-pointer"
+              className={`group relative flex flex-col items-center p-4 rounded-lg border backdrop-blur-sm hover:border-primary/50 hover:bg-card transition-all duration-300 cursor-pointer ${
+                matchedNumber?.num === item.num
+                  ? "border-primary/60 bg-card shadow-[0_0_20px_hsl(45_80%_55%/0.15)]"
+                  : "border-border/50 bg-card/50"
+              }`}
             >
               <span className="text-4xl md:text-5xl font-bold text-gradient-gold mb-2 transition-transform duration-300 group-hover:scale-110">
                 {item.num}
