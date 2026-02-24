@@ -27,7 +27,7 @@ const Footer = () => {
           </div>
           
           <p className="text-muted-foreground/50 text-sm mt-6">
-            © 2025 Numérologie • Tous droits réservés
+            © 2026 Elise Fanchon Numérologie • Tous droits réservés
           </p>
         </div>
       </div>
