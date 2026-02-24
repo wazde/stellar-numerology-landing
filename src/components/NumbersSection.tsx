@@ -70,9 +70,9 @@ const NumbersSection = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <p className="text-primary tracking-[0.2em] uppercase text-sm mb-4">
-            Les Vibrations
-          </p>
+          
+
+
           
 
 
