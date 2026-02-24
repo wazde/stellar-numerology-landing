@@ -26,7 +26,7 @@ const Footer = () => {
             <Link to="/mentions-legales" className="hover:text-primary transition-colors">Mentions légales</Link>
           </div>
           
-          <p className="text-muted-foreground/50 text-xs mt-6">
+          <p className="text-muted-foreground/50 text-sm mt-6">
             © 2025 Numérologie • Tous droits réservés
           </p>
         </div>

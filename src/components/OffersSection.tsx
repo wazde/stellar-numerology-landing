@@ -130,7 +130,7 @@ const OffersSection = () => {
             >
               {offer.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-gold-gradient text-primary-foreground text-xs font-semibold px-3 py-0.5 rounded-full">
+                  <span className="bg-gold-gradient text-primary-foreground text-sm font-semibold px-3 py-0.5 rounded-full">
                     Populaire
                   </span>
                 </div>
