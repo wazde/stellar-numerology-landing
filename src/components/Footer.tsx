@@ -15,10 +15,10 @@ const Footer = () => {
             </span>
           </div>
           
-          <p className="text-muted-foreground text-sm text-center max-w-md">
-            Révélez les secrets cachés dans les nombres et découvrez 
-            le chemin lumineux de votre destinée.
-          </p>
+          
+
+
+
           
           <div className="flex gap-8 mt-4 text-sm text-muted-foreground">
             <a href="#a-propos" className="hover:text-primary transition-colors">À propos</a>
@@ -31,8 +31,8 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;
