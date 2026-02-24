@@ -73,12 +73,12 @@ const NumbersSection = () => {
           <p className="text-primary tracking-[0.2em] uppercase text-sm mb-4">
             Les Vibrations
           </p>
-          <h2 className="text-4xl md:text-5xl font-semibold mb-6">
-            <span className="text-foreground">​Les Numéros
-            </span>
-            <span className="text-gradient-gold">​</span>
-            <span className="text-foreground"> Sacrés</span>
-          </h2>
+          
+
+
+
+
+
           
 
 
