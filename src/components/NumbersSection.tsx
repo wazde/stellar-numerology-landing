@@ -79,10 +79,10 @@ const NumbersSection = () => {
             <span className="text-gradient-gold">​</span>
             <span className="text-foreground"> Sacrés</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Chaque nombre porte une vibration unique qui influence notre personnalité, 
-            nos talents et notre destin.
-          </p>
+          
+
+
+
 
           {/* Calculator */}
           <div className="max-w-md mx-auto bg-card/50 border border-border/50 rounded-lg p-6 mb-8">
@@ -117,7 +117,7 @@ const NumbersSection = () => {
 
             {lifePathResult &&
             <div className="mt-5 pt-5 border-t border-border/50 animate-fade-in">
-                <p className="text-muted-foreground text-sm mb-2">{lifePathResult.steps}</p>
+                <p className="text-muted-foreground text-xs mb-2">{lifePathResult.steps}</p>
                 <p className="text-5xl font-bold text-gradient-gold mb-2">{lifePathResult.result}</p>
                 {matchedNumber &&
               <>
@@ -128,7 +128,7 @@ const NumbersSection = () => {
               </div>
             }
 
-            <p className="text-muted-foreground text-sm italic mt-4">
+            <p className="text-muted-foreground text-xs italic mt-4">
               Les maîtres nombres 11 et 22 ne se réduisent pas.
             </p>
           </div>
@@ -151,13 +151,13 @@ const NumbersSection = () => {
               <span className="text-4xl md:text-5xl font-bold text-gradient-gold mb-2 transition-transform duration-300 group-hover:scale-110">
                 {item.num}
               </span>
-              <span className="text-sm text-primary font-medium tracking-wide text-center">
+              <span className="text-xs text-primary font-medium tracking-wide text-center">
                 {item.meaning}
               </span>
               
               {/* Tooltip on hover */}
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-card border border-primary/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none w-52 z-20">
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-primary/30" />
               </div>
             </div>
