@@ -17,27 +17,34 @@ const HeroSection = () => {
         </div>
 
         <p className="text-primary tracking-[0.3em] uppercase text-sm mb-6 animate-fade-in">
-          Découvrez votre destinée
+          Numérologie
         </p>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold mb-6 leading-tight">
-          <span className="text-foreground">L'Art Sacré de la</span>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold mb-6 leading-tight">
+          <span className="text-foreground">Et si tout ce que tu es…</span>
           <br />
-          <span className="text-gradient-gold">Numérologie</span>
+          <span className="text-gradient-gold">avait déjà du sens ?</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-          Les nombres sont le langage secret de l'univers. Découvrez les mystères 
-          cachés dans votre date de naissance et révélez votre chemin de vie.
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
+          La numérologie pour te comprendre, te reconnaître… et avancer autrement.
+        </p>
+
+        <p className="text-base text-muted-foreground/80 max-w-xl mx-auto mb-10 leading-relaxed italic">
+          Je t'aide à faire des liens dans ton histoire, à mettre du sens sur ce que tu vis… et à t'accepter pleinement.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="mystical" size="lg" className="text-lg px-8 py-6">
-            Calculer mon Chemin de Vie
-          </Button>
-          <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-            En savoir plus
-          </Button>
+          <a href="#offres">
+            <Button variant="mystical" size="lg" className="text-lg px-8 py-6">
+              Découvrir mes offres
+            </Button>
+          </a>
+          <a href="#nombres">
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+              En savoir plus
+            </Button>
+          </a>
         </div>
 
         {/* Decorative line */}

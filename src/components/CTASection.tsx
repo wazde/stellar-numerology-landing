@@ -17,19 +17,20 @@ const CTASection = () => {
             <StarburstIcon className="w-12 h-12 text-primary mx-auto mb-6" />
             
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              <span className="text-foreground">Prêt à découvrir </span>
-              <span className="text-gradient-gold">votre vérité</span>
-              <span className="text-foreground"> ?</span>
+              <span className="text-foreground">Tout commence par une </span>
+              <span className="text-gradient-gold">première prise de conscience</span>
             </h2>
             
+            <p className="text-muted-foreground max-w-xl mx-auto mb-3 leading-relaxed">
+              Tu sens que c'est le moment ?
+            </p>
             <p className="text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
-              Laissez les nombres anciens vous guider vers une compréhension profonde 
-              de vous-même et de votre chemin de vie.
+              De te comprendre autrement. De faire des liens, et d'avancer avec plus de justesse.
             </p>
             
             <a href="#offres">
               <Button variant="mystical" size="lg" className="text-lg px-10 py-6">
-                Commencer mon voyage
+                Je découvre mon thème
               </Button>
             </a>
           </div>

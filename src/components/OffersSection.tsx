@@ -16,6 +16,7 @@ const offers = [
     features: ["PDF 6 pages", "Message vocal personnalisé"],
     popular: false,
     externalLink: "https://buy.stripe.com/3cIcN5dBIdml7756PBenS05",
+    description: "Un premier pas vers toi. Découvrir ton thème, comprendre ton fonctionnement et commencer à mettre du sens sur ce que tu vis. Idéal si tu ressens le besoin de te découvrir en douceur.",
   },
   {
     id: "acceptation",
@@ -26,6 +27,7 @@ const offers = [
     features: ["Séance visio 1h30", "Enregistrement transmis", "Compte rendu PDF"],
     popular: true,
     calLink: "https://cal.eu/elisefanchon-numerologie/offre-acceptation",
+    description: "Aller plus loin. Comprendre en profondeur ton fonctionnement, tes forces, tes blocages… et ce qui demande à être reconnu plutôt que corrigé. Un vrai moment d'échange, pour faire des liens concrets avec ta vie. Pour te comprendre, t'apaiser… et avancer autrement.",
   },
   {
     id: "elevation",
@@ -43,6 +45,7 @@ const offers = [
     popular: false,
     footnote: "*présentiel, me contacter en amont pour le déplacement",
     calLink: "https://cal.eu/elisefanchon-numerologie/offre-elevation",
+    description: "Un accompagnement pour intégrer, évoluer et incarner. On ne fait pas que comprendre. On avance ensemble. À ton rythme, avec un suivi, en fixant tes objectifs, pour transformer ce que tu découvres en mouvement réel. Pour t'aligner durablement avec qui tu es.",
   },
 ];
 
@@ -97,13 +100,22 @@ const OffersSection = () => {
   return (
     <section id="offres" className="relative py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="text-primary tracking-[0.2em] uppercase text-sm mb-4">Mes Offres</p>
           <h2 className="text-4xl md:text-5xl font-semibold mb-6">
-            <span className="text-foreground">Choisissez votre </span>
-            <span className="text-gradient-gold">Chemin</span>
+            <span className="text-foreground">Et si tu choisissais de </span>
+            <span className="text-gradient-gold">te comprendre autrement ?</span>
           </h2>
           <ConstellationDivider className="w-full max-w-md mx-auto text-primary/60 mt-6" />
+        </div>
+
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <p className="text-muted-foreground leading-relaxed">
+            Chaque séance est un espace pour toi. Un moment pour poser, comprendre… et faire des liens avec ce que tu vis.
+          </p>
+          <p className="text-muted-foreground leading-relaxed italic text-sm">
+            Tu ne viens pas chercher des réponses toutes faites. Tu viens créer du sens.
+          </p>
         </div>
 
         <div className="flex-col gap-4 lg:gap-6 flex md:flex-row">
@@ -137,6 +149,10 @@ const OffersSection = () => {
                     {offer.price}€
                   </span>
                 </div>
+
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  {offer.description}
+                </p>
 
                 <ul className="space-y-2 mb-6 flex-1">
                   {offer.features.map((feature, idx) => (
