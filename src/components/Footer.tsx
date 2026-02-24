@@ -8,12 +8,12 @@ const Footer = () => {
         <ConstellationDivider className="w-full max-w-sm mx-auto text-primary/40 mb-8" />
         
         <div className="flex flex-col items-center gap-4">
-          <div className="flex items-center gap-3">
-            <MoonIcon className="w-8 h-8 text-primary" />
-            <span className="text-xl font-semibold text-gradient-gold tracking-wide">
-              Numérologie
-            </span>
-          </div>
+          
+
+
+
+
+
           
           
 
